@@ -25,7 +25,7 @@ class Celula {
 	}
 }
 
-public class ListaCliente {
+public class ListaCliente implements ClienteRepositorio{
 	private Celula primeiro;
 	private Celula ultimo;
 
