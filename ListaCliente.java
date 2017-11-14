@@ -1,15 +1,19 @@
+import java.util.NoSuchElementException;
 class Celula {
 	private Celula proximo;
 	private Cliente cliente;
 
 	public Celula (Cliente cliente) {
-		this.cliente = cliente;
+		this.setCliente(cliente);
 	}
 	public void setProximo(Celula proximo) {
 		this.proximo = proximo;
 	}
 	public Celula getProximo() {
 		return this.proximo;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	public Cliente getCliente() {
 		return this.cliente;
@@ -43,12 +47,19 @@ public class ListaCliente implements ClienteRepositorio{
 		}
 	}
 
-	public Cliente procuraCliente(String cpf) {
+	private Celula procuraCelula(String cpf) {
 		Celula atual = this.primeiro;
 		while (atual != null && !atual.equals(cpf)) {
 			atual = atual.getProximo();
 		}
-		return atual.getCliente();
+		return atual;
+	}
+	public Cliente procuraCliente(String cpf) {
+		Celula celula = this.procuraCelula(cpf);
+		if (celula == null) {
+			return null;
+		}
+		return celula.getCliente();
 	}
 	public Cliente procuraCliente(Cliente cliente) {
 		return this.procuraCliente(cliente.getCpf());
@@ -79,5 +90,13 @@ public class ListaCliente implements ClienteRepositorio{
 	}
 	public void removeCliente(Cliente cliente) {
 		this.removeCliente(cliente.getCpf());
+	}
+
+	public void atualizaCliente(String cpf, Cliente cliente) throws NoSuchElementException {
+		Celula celula = this.procuraCelula(cpf);
+		if (celula == null) {
+			throw new NoSuchElementException("Nenhum cliente cadastrado com este cpf");
+		}
+		celula.setCliente(cliente);
 	}
 }

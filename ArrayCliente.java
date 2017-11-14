@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 public class ArrayCliente implements ClienteRepositorio {
 	private Cliente[] clientes;
 
@@ -15,25 +16,29 @@ public class ArrayCliente implements ClienteRepositorio {
 		novo_arr[this.clientes.length] = cliente;
 		this.clientes = novo_arr;
 	}
-	public Cliente procuraCliente(String cpf) {
-		Cliente encontrado = null;
-		for (int i = 0; i < this.clientes.length && encontrado == null; ++i) {
-			if (this.clientes[i].getCpf().equals(cpf)) {
-				encontrado = this.clientes[i];
-			}
-		}
-		return encontrado;
-	}
-	public Cliente procuraCliente(Cliente cliente) {
-		return this.procuraCliente(cliente.getCpf());
-	}
-	public void removeCliente(String cpf) {
+
+	public int procuraClienteIndex(String cpf) {
 		int index = -1;
 		for (int i = 0; i < this.clientes.length && index == -1; ++i) {
 			if (this.clientes[i].getCpf().equals(cpf)) {
 				index = i;
 			}
 		}
+		return index;
+	}
+	public Cliente procuraCliente(String cpf) {
+		int index = this.procuraClienteIndex(cpf);
+		if (index == -1) {
+			return null;
+		}
+		return this.clientes[index];
+	}
+	public Cliente procuraCliente(Cliente cliente) {
+		return this.procuraCliente(cliente.getCpf());
+	}
+
+	public void removeCliente(String cpf) {
+		int index = this.procuraClienteIndex(cpf);
 		if (index != -1) {
 			Cliente[] novo_array = new Cliente[this.clientes.length-1];
 			for (int i = 0; i < index; ++i) {
@@ -46,5 +51,13 @@ public class ArrayCliente implements ClienteRepositorio {
 	}
 	public void removeCliente(Cliente cliente) {
 		this.removeCliente(cliente.getCpf());
+	}
+
+	public void atualizaCliente(String cpf, Cliente cliente) throws NoSuchElementException {
+		int index = this.procuraClienteIndex(cpf);
+		if (index == -1) {
+			throw new NoSuchElementException("Nenhum cliente cadastrado com este cpf");
+		}
+		this.clientes[index] = cliente;
 	}
 }
