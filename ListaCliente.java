@@ -56,18 +56,23 @@ public class ListaCliente {
 
 	public void removeCliente(String cpf) {
 		Celula atual = this.primeiro;
-		if (atual.equals(cpf)) {
-			this.primeiro = atual.getProximo();
-		} else {
-			boolean encontrou = false;
-			Celula proximo = atual.getProximo();
-			while (proximo != null && !encontrou) {
-				if (proximo.equals(cpf)) {
-					atual.setProximo(proximo.getProximo());
-					encontrou = true;
-				} else {
-					atual = proximo;
-					proximo = proximo.getProximo();
+		if (atual != null) {
+			if (atual.equals(cpf)) {
+				this.primeiro = atual.getProximo();
+				if (this.primeiro == null) {
+					this.ultimo = null;
+				}
+			} else {
+				boolean encontrou = false;
+				Celula proximo = atual.getProximo();
+				while (proximo != null && !encontrou) {
+					if (proximo.equals(cpf)) {
+						atual.setProximo(proximo.getProximo());
+						encontrou = true;
+					} else {
+						atual = proximo;
+						proximo = proximo.getProximo();
+					}
 				}
 			}
 		}
