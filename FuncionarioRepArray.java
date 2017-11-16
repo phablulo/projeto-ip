@@ -5,7 +5,16 @@ public class FuncionarioRepArray {
 	public FuncionarioRepArray() {
 		
 	}
-	public void adicionarFuncionario() {
+	public void inserirFuncionario() {
+		
+	}
+	public Funcionario procurarFuncionario() {
+		
+	}
+	public void atualizarFuncionario() {
+		
+	}
+	public removerFuncionario() {
 		
 	}
 }
