@@ -1,3 +1,4 @@
+package livraria;
 
 public class Funcionario extends Pessoa {
 	String nome;
@@ -7,7 +8,7 @@ public class Funcionario extends Pessoa {
 	String endereco;
 	
 	public Funcionario(String nome, String cpf, String cargo) {
-		//super(nome, cpf); implícito por causa do construtor em Pessoa?
+		super(nome, cpf);
 		this.cargo = cargo;
 	}
 	public Funcionario(String nome, String cpf, String cargo, String datanasc, String endereco) {
@@ -15,14 +16,14 @@ public class Funcionario extends Pessoa {
 		this.cargo = cargo;
 	}
 	
-	public void atualizarFuncionario() {
+	public void atualizar() {
 		
 		
 	}
 	public Funcionario getFuncionario() {
 		return new Funcionario(this.nome, this.cpf, this.cargo, this.datanasc, this.endereco);
 	}
-	//TODO: fazer um método genérico para getters e setters 
+	//TODO: fazer um método genérico para getters e setters em Pessoa
 	/*public void getFuncionario() {
 		super.getPessoa();	
 	}*/
