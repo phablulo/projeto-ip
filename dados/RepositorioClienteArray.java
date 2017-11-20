@@ -1,8 +1,9 @@
+package dados;
 import java.util.NoSuchElementException;
-public class ArrayCliente implements ClienteRepositorio {
+public class RepositorioClienteArray implements ClienteRepositorio {
 	private Cliente[] clientes;
 
-	public ArrayCliente (){
+	public RepositorioClienteArray (){
 		this.clientes = new Cliente[0];
 	}
 	public void adicionaCliente(Cliente cliente) throws IllegalArgumentException {

@@ -1,3 +1,4 @@
+package dados;
 import java.util.NoSuchElementException;
 class Celula {
 	private Celula proximo;
@@ -29,7 +30,7 @@ class Celula {
 	}
 }
 
-public class ListaCliente implements ClienteRepositorio{
+public class RepositorioCliente implements ClienteRepositorio{
 	private Celula primeiro;
 	private Celula ultimo;
 

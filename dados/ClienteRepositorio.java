@@ -1,3 +1,4 @@
+package dados;
 import java.util.NoSuchElementException;
 public interface ClienteRepositorio {
 	public void adicionaCliente(Cliente cliente) throws IllegalArgumentException;
