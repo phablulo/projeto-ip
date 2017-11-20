@@ -23,6 +23,8 @@ public class Funcionario extends Pessoa {
 	public Funcionario getFuncionario() {
 		return new Funcionario(this.nome, this.cpf, this.cargo, this.datanasc, this.endereco);
 	}
+	
+	
 	//TODO: fazer um método genérico para getters e setters em Pessoa
 	/*public void getFuncionario() {
 		super.getPessoa();	

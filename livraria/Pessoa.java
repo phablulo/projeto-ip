@@ -2,7 +2,7 @@ package livraria;
 
 /* 1.0 - Verificar se deve ser usado interface ou depender da classe abstrata Pessoa 
  * para implementar inserir, atualizar, remover e procurar. (Improvável, porque cada
- * subclasse de Pessoa deve implementar suas próprias exceções. 
+ * subclasse de Pessoa deve implementar suas próprias exceções).
  * 1.1 - Proceder a definir métodos abstratos e métodos identicos entre as subclasses.*/
 
 public abstract class Pessoa {
