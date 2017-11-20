@@ -14,7 +14,7 @@ public class Cliente extends Pessoa {
 	public String getCpf() {
 		return this.cpf;
 	}
-	public int getClienteId() {
+	public String getClienteId() {
 		return this.ClienteId;
 	}
  	public void setNome(String nome) {
