@@ -1,4 +1,5 @@
 package ui;
+
 import dados.*;
 
 /*Classe para testar o programa e tratar das exceptions*/
