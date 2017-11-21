@@ -57,15 +57,15 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		} else {
 			//continuar corrigindo os indices
 			Funcionario[] aux1 = new Funcionario[this.index - index];
-			for(int i = index; i < this.index; i++) {
+			for(int i = 0; i < this.index; i++) {
+				if(i == index) {
+					i++;
+				}
 				aux1[i] = funcionarios[i];
 			}
-			this.funcionarios[index];
-			/*if(this.index < this.funcionarios.length) {
-				
-			} else {
-				
-			}*/
+			this.index--;
+			this.funcionarios = new Funcionario[index];
+			this.funcionarios = aux1;
 		}
 	}
 }

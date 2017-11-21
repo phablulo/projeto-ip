@@ -1,3 +1,6 @@
+package dados;
+import livraria.Livro;
+
 public class RepositorioLivrosArray implements livrosRepositorio {
 	private Livro[] livro;
 	
