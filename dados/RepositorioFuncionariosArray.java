@@ -28,7 +28,7 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	}
 	/*É necessário acrescentar throws na assinatura uma vez que já esteja presente no método de busca quando ele for chamado?
 	colocar funcionarios[index].remover(funcionarios.procurar(cpf)); no main*/
-	//Manipular pela index, evitar confundir com cópias;
+	//Manipular pela index, evitar confundir com as cópias resultantes retornadas pelos métodos;
 	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		if(this.index < this.funcionarios.length) {
 			

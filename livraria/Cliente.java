@@ -2,12 +2,20 @@ public class Cliente extends Pessoa {
 	String nome;
 	String cpf;
 	String ClienteId;
-
+	
+	/*Adequar os metodos e construtores a classe abstrata usando a keyword super.
+	 * Reforcando, o uso de Ids pode nao ser tao interessante, cpf seria uma alternativa melhor e mais rápida para implementar.*/ 
+	
 	public Cliente(String nome, String cpf, String ClienteId) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.ClienteId = ClienteId;
-
+	}
+	//Segundo construtor a ser implementado de acordo com a classe abstrata
+	public Cliente(String nome, String cpf, String datanasc, String endereco) {
+		
+	}
+	
 	public String getNome() {
 		return this.nome;
 	}
