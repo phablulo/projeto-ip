@@ -35,7 +35,7 @@ public class ListaLivros implements livrosRepositorio{
 
 	public void adicionaLivro(Livro livro) throws IllegalArgumentException { //throws LivroJaCadastradoException {
 		if (this.procuraLivro(livro) != null) {
-			throw new IllegalArgumentException("Livro já foi cadastrado no repositório"); //throw new LivroJaCadastradoException();
+			throw new IllegalArgumentException("Livro ja foi cadastrado no repositorio"); //throw new LivroJaCadastradoException();
 		}
 		Celula celula = new Celula(livro);
 		if (this.ultimo != null) {
