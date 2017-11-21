@@ -1,21 +1,14 @@
 package livraria;
 
-<<<<<<< HEAD
-/* 1.0 - Verificar se deve ser usado interface ou depender da classe abstrata Pessoa 
- * para implementar inserir, atualizar, remover e procurar. (Improvável, porque cada
- * subclasse de Pessoa deve implementar suas próprias exceções).
- * 1.1 - Proceder a definir métodos abstratos e métodos identicos entre as subclasses.*/
-=======
 /* 1.0 - Verificar se deve ser usado interface ou depender da classe abstrata Pessoa
  * para implementar inserir, atualizar, remover e procurar. (Improvavel, porque cada
  * subclasse de Pessoa deve implementar suas proprias excecoes.
  * 1.1 - Proceder a definir mÃ³todos abstratos e mÃ©todos identicos entre as subclasses.*/
->>>>>>> 77052ecada07bc9777cbc7a52cc2249503b21803
 
 public abstract class Pessoa {
 	private String nome;
 	private String cpf;
-	private String datanasc;
+	private String datanasc; //renomear para nascimento.
 	private String endereco;
 
 	public Pessoa(String nome, String cpf) {
@@ -26,6 +19,31 @@ public abstract class Pessoa {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.datanasc = datanasc;
+		this.endereco = endereco;
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	public String getCpf() {
+		return this.cpf;
+	}
+	public String getDataNasc() {
+		return this.datanasc;
+	}
+	public String getEndereco() {
+		return this.endereco;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public void setDataNasc(String datanasc) {
+		this.datanasc = datanasc;
+	}
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	//Vide 1.0
