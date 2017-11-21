@@ -48,7 +48,8 @@ public abstract class Pessoa {
 		this.endereco = endereco;
 	}
 	
-	abstract Livro procurarLivro(String nome); 
+	//Concepcao errada
+	//abstract Livro procurarLivro(String nome); 
 	
 	public void atualizar(Pessoa pessoa) {
 		this.nome = pessoa.getNome();

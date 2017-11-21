@@ -11,7 +11,7 @@ public class Cliente extends Pessoa {
 		this.cpf = cpf;
 		this.ClienteId = ClienteId;
 	}
-	//Segundo construtor a ser implementado de acordo com a classe abstrata
+	//Segundo construtor a ser implementado de acordo com a classe abstrata. Se necessario, observe como ficou a classe Funcionario.
 	public Cliente(String nome, String cpf, String datanasc, String endereco) {
 		
 	}
@@ -33,6 +33,6 @@ public class Cliente extends Pessoa {
 	}
 	public void setClienteId(String ClienteId) {
 		this.ClienteId = ClienteId;
-
+	}
 }
 
