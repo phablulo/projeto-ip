@@ -5,6 +5,6 @@ public class FuncionarioNaoEncontradoException extends Exception {
 		super(message);
 	}
 	public FuncionarioNaoEncontradoException() {
-		super("Funcionário não encontrado");
+		super("Funcionario nao encontrado.");
 	}
 }

@@ -1,5 +1,6 @@
 package dados;
 
+import exceptions.FuncionarioNaoEncontradoException;
 import livraria.Funcionario;
 
 /*Verificar se assinaturas com argumentos do tipo Pessoa seriam melhores ou mais adequadas para esta interface*/
