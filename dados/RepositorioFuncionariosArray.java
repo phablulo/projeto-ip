@@ -20,7 +20,6 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		for(int i = 0; i < length && !encontrado; i++) {
 			if(this.funcionarios[i].getCpf().equals(cpf)) {
 				resultado = i;
-				i = this.index;
 				encontrado = true; // adicionada condicao de parada quando encontrar o funcionário
 			}
 		}
@@ -67,13 +66,13 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		- é se você não tratar ela dentro desse método.
 	colocar funcionarios[index].remover(funcionarios.procurar(cpf));*/
 	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
-		int index = this.getIndex(funcionario);
+		int index = this.getIndex(funcionario.getCpf());
 		if(index == -1) {
 			throw new FuncionarioNaoEncontradoException();
 		} else {
 			// continuar corrigindo os indices
-			Funcionario[] aux1 = new Funcionario[this.index - 1]; // não é `- index`, é `- 1`
 			int length = this.funcionarios.length;
+			Funcionario[] aux1 = new Funcionario[length - 1]; // não é `- index`, é `- 1`
 			for(int i = 0; i < length; i++) {
 				if(i == index) {
 					continue;
