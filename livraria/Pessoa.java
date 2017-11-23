@@ -1,15 +1,9 @@
 package livraria;
 
-import dados.Livro;
-/* 1.0 - Verificar se deve ser usado interface ou depender da classe abstrata Pessoa
- * para implementar inserir, atualizar, remover e procurar. (Improvavel, porque cada
- * subclasse de Pessoa deve implementar suas proprias excecoes, a menos que nao existe tal limitacao).
- * 1.1 - Proceder a definir tais metodos entre todas subclasses.*/
-
 public abstract class Pessoa {
 	private String nome;
 	private String cpf;
-	private String datanasc; //renomear para nascimento.
+	private String datanasc;
 	private String endereco;
 
 	public Pessoa(String nome, String cpf) {
@@ -44,12 +38,9 @@ public abstract class Pessoa {
 	public void setDataNasc(String datanasc) {
 		this.datanasc = datanasc;
 	}
-	public void setEndereco(String endereco) {
+	public void setEndereco(String endereco) { 
 		this.endereco = endereco;
 	}
-	
-	//Concepcao errada
-	//abstract Livro procurarLivro(String nome); 
 	
 	public void atualizar(Pessoa pessoa) {
 		this.nome = pessoa.getNome();
@@ -57,11 +48,10 @@ public abstract class Pessoa {
 		this.datanasc = pessoa.getDataNasc();
 		this.endereco = pessoa.getEndereco();
 	}
-	//Vide 1.0
 	/*public void inserir(Pessoa pessoa) {
 
 	}
-	public Pessoa procurar(String cpf) throws Pessoa {
+	public Pessoa procurar(String cpf) {
 
 	}
 	public void atualizar(Pessoa pessoa) {
@@ -69,10 +59,5 @@ public abstract class Pessoa {
 	}
 	public void remover(Pessoa pessoa) {
 
-	}*/
-
-	//Save for later � if needed at all.
-	/*public Pessoa getPessoa() {
-		return new Pessoa(this.nome, this.cpf, this.datanasc, this.endereco);
 	}*/
 }
