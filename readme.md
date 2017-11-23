@@ -1,10 +1,12 @@
 Chat do projeto
 
 [![Join the chat at https://gitter.im/projeto-ip/Lobby](https://badges.gitter.im/projeto-ip/Lobby.svg)](https://gitter.im/projeto-ip/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-#TODO#
-+ Classe faixada;
-+ Todas as exceções restantes;
-+ Lista e correções em Cliente e seus repositórios.
+
+# TODO #
+
+- Classe faixada;
+- Todas as exceções restantes;
+- Lista e correções em Cliente e seus repositórios.
 
 # Coisas feitas #
 
