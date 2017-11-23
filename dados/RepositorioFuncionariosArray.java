@@ -5,14 +5,14 @@ import exceptions.FuncionarioNaoEncontradoException;
 
 public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	private Funcionario[] funcionarios;
-	// private int index; removido por ser denecessário: o tamanho é dinâmico
+	// private int index; removido por ser denecessario: o tamanho o dinamico
 
-	public RepositorioFuncionariosArray() {// removido argumento porque o tamanho é dinâmico
+	public RepositorioFuncionariosArray() {// removido argumento porque o tamanho o dinamico
 		this.funcionarios = new Funcionario[0];
 		// this.index = 0;
 	}
 
-	// troquei o argumento pra string (o cpf ao invés do objeto funcionario)
+	// troquei o argumento pra string (o cpf ao invï¿½s do objeto funcionario)
 	public int getIndex(String cpf) {
 		int resultado = -1;
 		boolean encontrado = false;
@@ -20,14 +20,14 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		for(int i = 0; i < length && !encontrado; i++) {
 			if(this.funcionarios[i].getCpf().equals(cpf)) {
 				resultado = i;
-				encontrado = true; // adicionada condicao de parada quando encontrar o funcionário
+				encontrado = true; // adicionada condicao de parada quando encontrar o funcionario
 			}
 		}
 		return resultado;
 	}
 	// Permitir sobrescrever sem excecao?
-	// 		Não. Cria um novo array contendo todos os funcionarios
-	// 		reescrevi todo o método. Olha as diferenças no histórico do git.
+	// 		Nao. Cria um novo array contendo todos os funcionarios
+	// 		reescrevi todo o metodo. Olha as diferencas no historico do git.
 	public void inserir(Funcionario funcionario) {
 		int length = this.funcionarios.length;
 		Funcionario[] arr = new Funcionario(length + 1);
@@ -44,7 +44,7 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	//	...
 	// }
 	// o que ia levar a um loop infinito.
-	// Também reescrevi o método completamente
+	// Tambem reescrevi o metodo completamente
 	public Funcionario procurar(String cpf) throws FuncionarioNaoEncontradoException {
 		int index = this.getIndex(cpf);
 		if (index == -1) {
@@ -63,7 +63,7 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	}
 
 	/*E necessario acrescentar throws na assinatura uma vez que ja esteja presente no metodo de busca quando ele for chamado?
-		- é se você não tratar ela dentro desse método.
+		- Ã‰ se voce nao tratar ela dentro desse metodo.
 	colocar funcionarios[index].remover(funcionarios.procurar(cpf));*/
 	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		int index = this.getIndex(funcionario.getCpf());
@@ -72,12 +72,12 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 		} else {
 			// continuar corrigindo os indices
 			int length = this.funcionarios.length;
-			Funcionario[] aux1 = new Funcionario[length - 1]; // não é `- index`, é `- 1`
+			Funcionario[] aux1 = new Funcionario[length - 1]; // nao eh `- index`, eh `- 1`
 			for(int i = 0; i < length; i++) {
 				if(i == index) {
 					continue;
-					// okay, colocar i++ aqui daria uns bug estranho, além de um ArrayIndexOutOfBoudsException na linha seguinte.
-					// `continue` é o que você queria fazer.
+					// okay, colocar i++ aqui daria uns bug estranho, alem de um ArrayIndexOutOfBoudsException na linha seguinte.
+					// `continue` eh o que voce queria fazer.
 				}
 				aux1[i] = funcionarios[i];
 			}
