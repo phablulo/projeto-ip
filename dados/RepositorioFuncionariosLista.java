@@ -6,7 +6,7 @@ import exceptions.FuncionarioNaoEncontradoException;
 public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 	private Funcionario funcionario;
 	private RepositorioFuncionariosLista next;
-	//private Funcionario resultado;
+	
 	public RepositorioFuncionariosLista() {
 		this.funcionario = null;
 		this.next = null;
@@ -15,7 +15,7 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 	public void inserir(Funcionario funcionario) {
 		if(this.funcionario == null) {
 			this.funcionario = funcionario;
-			next = new RepositorioFuncionariosLista();
+			this.next = new RepositorioFuncionariosLista();
 		} else {
 			this.next.inserir(funcionario);
 		}
@@ -29,6 +29,7 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 			return this.next.procurar(cpf);
 		}
 	}
+	
 	//Evitar redundancia de excecoes? 
 	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		if(this.funcionario != null && this.funcionario.getCpf().equals(funcionario.getCpf())) {
@@ -48,15 +49,5 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 		} else {
 			this.next.atualizar(funcionario);
 		}
-		
-		/*if(this.funcionario != null && this.funcionario.getCpf().equals(funcionario.getCpf())) {
-			this.funcionario = null;
-			//Remover link da lista
-			//this.funcionario = new RepositorioFuncionariosLista(this.next);
-		} else if(this.funcionario == null && !(this.funcionario.getCpf().equals(cpf))) {
-			throw new FuncionarioNaoEncontradoException();
-		} else {
-			this.next.atualizar(funcionario);
-		}*/
 	}
 }
