@@ -1,7 +1,8 @@
 package dados;
 import livraria.Livro;
+import exceptions.LivroNaoEncontradoException;
 
-public class RepositorioLivrosArray implements livrosRepositorio {
+public class RepositorioLivrosArray implements RepositorioLivros {
 	private Livro[] livro;
 	
 	public RepositorioLivrosArray(int tamanho) {

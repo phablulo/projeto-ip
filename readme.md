@@ -5,7 +5,7 @@ Chat do projeto
 # TODO #
 
 - Classe faixada;
-- Todas as exceções restantes;
+- Todas as exceções restantes/unir todas as exceções dos seus respectivos objetos em uma única exceção;
 - Lista e correções em Cliente e seus repositórios.
 
 # Coisas feitas #
@@ -30,7 +30,7 @@ Chat do projeto
 | nome | feito por | terminado
 |------|-----------|-----------|
 | ClienteRepositorio | Phablulo | sim
-| RepositorioLivros | Robson | não
+| RepositorioLivros | Robson | sim
 
 
 #### Repositórios ####
@@ -51,3 +51,5 @@ Chat do projeto
 | nome | feito por | terminado |
 |------|-----------|-----------|
 | FuncionarioNaoEncontradoException | Robson | sim
+| LivroNaoEncontradoException | Robson | sim
+| LivroJaCadastradoException | Robson | sim

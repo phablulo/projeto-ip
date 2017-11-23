@@ -1,5 +1,6 @@
 package livraria;
-class Livro {
+
+public class Livro {
 	private String id;
 	private String nome;
 	private String[] autor;

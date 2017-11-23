@@ -1,5 +1,4 @@
 package dados;
-
 import livraria.Funcionario;
 import exceptions.FuncionarioNaoEncontradoException;
 

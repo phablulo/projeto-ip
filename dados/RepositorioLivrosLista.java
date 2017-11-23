@@ -1,4 +1,7 @@
-import java.util.NoSuchElementException;
+package dados;
+import exceptions.LivroNaoEncontradoException;
+import exceptions.LivroJaCadastradoException;
+
 class Celula {
 	private Celula proximo;
 	private Livro livro;
@@ -29,13 +32,13 @@ class Celula {
 	}
 }
 
-public class ListaLivros implements livrosRepositorio{
+public class RepositorioLivrosLista implements RepositorioLivros {
 	private Celula primeiro;
 	private Celula ultimo;
 
-	public void adicionaLivro(Livro livro) throws IllegalArgumentException { //throws LivroJaCadastradoException {
+	public void adicionaLivro(Livro livro) throws LivroJaCadastradoException {
 		if (this.procuraLivro(livro) != null) {
-			throw new IllegalArgumentException("Livro ja foi cadastrado no repositorio"); //throw new LivroJaCadastradoException();
+			throw new LivroJaCadastradoException();
 		}
 		Celula celula = new Celula(livro);
 		if (this.ultimo != null) {
@@ -92,10 +95,10 @@ public class ListaLivros implements livrosRepositorio{
 		this.removeLivro(livro.getId());
 	}
 
-	public void atualizaListaLivros(String id, Livro livro) throws NoSuchElementException {
+	public void atualizaListaLivros(String id, Livro livro) throws LivroNaoEncontradoException {
 		Celula celula = this.procuraCelula(id);
 		if (celula == null) {
-			throw new NoSuchElementException("Nenhum livro cadastrado com este id.");
+			throw new LivroNaoEncontradoException();
 		}
 		celula.setLivro(livro);
 	}
