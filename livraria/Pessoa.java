@@ -48,16 +48,4 @@ public abstract class Pessoa {
 		this.datanasc = pessoa.getDataNasc();
 		this.endereco = pessoa.getEndereco();
 	}
-	/*public void inserir(Pessoa pessoa) {
-
-	}
-	public Pessoa procurar(String cpf) {
-
-	}
-	public void atualizar(Pessoa pessoa) {
-
-	}
-	public void remover(Pessoa pessoa) {
-
-	}*/
 }
