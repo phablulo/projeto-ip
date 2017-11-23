@@ -7,7 +7,9 @@ Chat do projeto
 
 #### Classe abstrata ####
 
-- Pessoa.java
+| nome | feito por | terminado
+|------|-----------|----------|
+| Pessoa | Phablulo | sim
 
 #### Classes básicas: ####
 
@@ -16,6 +18,14 @@ Chat do projeto
 | Livro | Phablulo  | sim
 | Funcionario | Robson | sim
 | Cliente | Thomas | sim
+
+
+### Intefaces ###
+
+| nome | feito por | terminado
+|------|-----------|-----------|
+| ClienteRepositorio | Phablulo | sim
+| RepositorioLivros | Robson | não
 
 
 #### Repositórios ####
