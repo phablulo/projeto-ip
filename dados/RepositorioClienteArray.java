@@ -8,7 +8,7 @@ public class RepositorioClienteArray implements ClienteRepositorio {
 	}
 	public void adicionaCliente(Cliente cliente) throws IllegalArgumentException {
 		if (this.procuraCliente(cliente) != null) {
-			throw new IllegalArgumentException("Cliente já existe no repositório");
+			throw new IllegalArgumentException("Cliente ja existe no repositorio");
 		}
 		Cliente[] novo_arr = new Cliente[this.clientes.length+1];
 		for (int i = 0; i < this.clientes.length; ++i) {

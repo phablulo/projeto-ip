@@ -36,7 +36,7 @@ public class RepositorioCliente implements ClienteRepositorio{
 
 	public void adicionaCliente(Cliente cliente) throws IllegalArgumentException {
 		if (this.procuraCliente(cliente) != null) {
-			throw new IllegalArgumentException("Cliente já existe no repositório");
+			throw new IllegalArgumentException("Cliente ja existe no repositorio");
 		}
 		Celula celula = new Celula(cliente);
 		if (this.ultimo != null) {
