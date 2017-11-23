@@ -30,7 +30,7 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	// 		reescrevi todo o método. Olha as diferenças no histórico do git.
 	public void inserir(Funcionario funcionario) {
 		int length = this.funcionarios.length;
-		Functionario[] arr = new Functionario(length + 1);
+		Funcionario[] arr = new Funcionario(length + 1);
 		int i;
 		for (i = 0; i < length; ++i) {
 			arr[i] = this.funcionarios[i];
