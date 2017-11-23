@@ -22,12 +22,15 @@ Chat do projeto
 
 | nome | feito por | terminado |
 |------|-----------|-----------|
-| RepositorioFuncionariosArray | Robson | sim
 | RepositorioFuncionarios | Robson | sim
-| RepositorioClientesArray | Phablulo | sim
+| RepositorioFuncionariosArray | Robson | sim
+| RepositorioFuncionariosLista | Robson | sim
 | RepositorioClientes | Phablulo | sim
+| RepositorioClientesArray | Phablulo | sim
+| RepositorioClientesLista | Phablulo | sim
 | RepositorioLivros | Thomas | não
 | RepositoriosLivrosArray | Thomas | não
+| RepositoriosLivrosLista | Thomas | não
 
 #### Exceções ####
 | nome | feito por | terminado |
