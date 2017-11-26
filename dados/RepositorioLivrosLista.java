@@ -2,17 +2,17 @@ package dados;
 import exceptions.LivroNaoEncontradoException;
 import exceptions.LivroJaCadastradoException;
 
-class Celula {
-	private Celula proximo;
+class LCelula {
+	private LCelula proximo;
 	private Livro livro;
 
-	public Celula (Livro livro) {
+	public LCelula (Livro livro) {
 		this.setLivro(livro);
 	}
-	public void setProximo(Celula proximo) {
+	public void setProximo(LCelula proximo) {
 		this.proximo = proximo;
 	}
-	public Celula getProximo() {
+	public LCelula getProximo() {
 		return this.proximo;
 	}
 	public void setLivro(Livro livro) {
@@ -27,20 +27,20 @@ class Celula {
 	public Boolean equals(String id) {
 		return this.livro.getId().equals(id);
 	}
-	public Boolean equals(Celula to) {
+	public Boolean equals(LCelula to) {
 		return this.livro.getId().equals(to.getLivro().getId());
 	}
 }
 
 public class RepositorioLivrosLista implements RepositorioLivros {
-	private Celula primeiro;
-	private Celula ultimo;
+	private LCelula primeiro;
+	private LCelula ultimo;
 
 	public void adicionaLivro(Livro livro) throws LivroJaCadastradoException {
 		if (this.procuraLivro(livro) != null) {
 			throw new LivroJaCadastradoException();
 		}
-		Celula celula = new Celula(livro);
+		LCelula celula = new LCelula(livro);
 		if (this.ultimo != null) {
 			this.ultimo.setProximo(celula);
 			this.ultimo = celula;
@@ -50,15 +50,15 @@ public class RepositorioLivrosLista implements RepositorioLivros {
 		}
 	}
 
-	private Celula procuraCelula(String nome) {
-		Celula atual = this.primeiro;
+	private LCelula procuraLCelula(String nome) {
+		LCelula atual = this.primeiro;
 		while (atual != null && !atual.equals(nome)) {
 			atual = atual.getProximo();
 		}
 		return atual;
 	}
 	public Livro procuraLivro(String nome) {
-		Celula celula = this.procuraCelula(nome);
+		LCelula celula = this.procuraLCelula(nome);
 		if (celula == null) {
 			return null;
 		}
@@ -69,7 +69,7 @@ public class RepositorioLivrosLista implements RepositorioLivros {
 	}
 
 	public void removeLivro(String id) {
-		Celula atual = this.primeiro;
+		LCelula atual = this.primeiro;
 		if (atual != null) {
 			if (atual.equals(id)) {
 				this.primeiro = atual.getProximo();
@@ -78,7 +78,7 @@ public class RepositorioLivrosLista implements RepositorioLivros {
 				}
 			} else {
 				boolean encontrou = false;
-				Celula proximo = atual.getProximo();
+				LCelula proximo = atual.getProximo();
 				while (proximo != null && !encontrou) {
 					if (proximo.equals(id)) {
 						atual.setProximo(proximo.getProximo());
@@ -96,7 +96,7 @@ public class RepositorioLivrosLista implements RepositorioLivros {
 	}
 
 	public void atualizaListaLivros(String id, Livro livro) throws LivroNaoEncontradoException {
-		Celula celula = this.procuraCelula(id);
+		LCelula celula = this.procuraLCelula(id);
 		if (celula == null) {
 			throw new LivroNaoEncontradoException();
 		}

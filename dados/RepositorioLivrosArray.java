@@ -4,7 +4,7 @@ import exceptions.LivroNaoEncontradoException;
 
 public class RepositorioLivrosArray implements RepositorioLivros {
 	private Livro[] livro;
-	
+
 	public RepositorioLivrosArray(int tamanho) {
 		livro = new Livro[0];
 	}
@@ -18,14 +18,14 @@ public class RepositorioLivrosArray implements RepositorioLivros {
 		}
 		novo_array[this.livro.lenght] = livro;
 		this.livro = novo_array;
-		
+
 	}
 
 	public Livro procuraLivro(String nome) {
 		int ind = this.getPos(nome);
 		if (ind == -1) {
 			return null;
-		} 	
+		}
 		return this.livro[ind];
 	}
 
@@ -48,7 +48,7 @@ public class RepositorioLivrosArray implements RepositorioLivros {
 			Livro[]novo_array = new Livro[this.livro.lenght-1];
 			for(int i = 0; i < ind; i++) {
 				novo_array[i] = this.livro[i];
-			}	
+			}
 			for(int i = ind + 1; i < this.livro.lenght; i++) {
 				novo_array = this.livro[i];
 			}
@@ -65,6 +65,6 @@ public class RepositorioLivrosArray implements RepositorioLivros {
 			throw new LivroNaoCadastradoException();
 		}
 		this.livro[i] = livro;
-	}	
+	}
 }
 
