@@ -4,9 +4,7 @@ Chat do projeto
 
 # TODO #
 
-- Classe faixada;
 - Todas as exceções restantes/unir todas as exceções dos seus respectivos objetos em uma única classe;
-- Lista e correções em Cliente e seus repositórios.
 
 # Coisas feitas #
 
@@ -53,3 +51,21 @@ Chat do projeto
 | FuncionarioNaoEncontradoException | Robson | sim
 | LivroNaoEncontradoException | Robson | sim
 | LivroJaCadastradoException | Robson | sim
+
+
+### Classe fachada ###
+
+
+| feito | funciona ? | motivo
+|-------|------------|---------
+| leitura de arquivo | sim |
+| teste do Repositório de Funcionários em lista | não | erro ao remover funcionários: NullPointerException
+| teste do Repositório de Funcionários em array | não | erro ao remover funcionários: NullPointerException
+| teste do Repositório de Clientes em lista | sim |
+| teste do Repositório de Clientes em array | sim |
+
+| **Não** feito | motivo |
+|---------------|--------|
+| teste de Repositório de Livros em lista | não compila
+| teste de Repositório de Livros em array | não compila
+| função para interagir duas classes | Eu teria que alterar um pouco a classe Cliente, o que não quero fazer agora.

@@ -4,6 +4,9 @@ import dados.*;
 import livraria.*;
 import exceptions.*;
 import java.util.Random;
+import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 
 /*Classe para testar o programa e tratar das exceptions*/
 
@@ -13,14 +16,30 @@ public class Programa {
 	private static RepositorioLivros repositorioLivros;
 
 	public static void main(String[] args) {
+		String modo;
+		try {
+			FileReader file = new FileReader("opcao.txt");
+			Scanner in = new Scanner(file);
+			modo = in.nextLine();
+		} catch (FileNotFoundException e) {
+			System.out.println("---------------------------------------------------------------");
+			System.out.println("Arquivo opcao.txt nao encontrado. Usaremos repositorio em array");
+			System.out.println("---------------------------------------------------------------\n");
+			modo = "array";
+		}
+
+		Boolean usa_lista = (modo.equals("lista"));
+
+		System.out.println("Iniciando programa. Usaremos repositorio em "+(usa_lista ? "lista" : "array"));
+		System.out.println("-------------------------------------------------\n\n");
+
+
 		Funcionario fun1 = new Funcionario("Paulo", "000.000.000-01", "Vendedor");
 		Funcionario fun2 = new Funcionario("Joao", "111.111.111-11", "Vendedor");
 		Cliente c1 = new Cliente("Marcos","123.123.123-12");
 		Cliente c2 = new Cliente("Lucas","234.234.234-23");
 		Livro alquimista = new Livro("001", "O Alquimista", new String[]{"Paulo Coelho"}, 93, 25.0);
 		Livro narnia     = new Livro("001", "As Crônicas de Nárnia", new String[]{"C.S. Lewis"}, 800, 80.0);
-
-		Boolean usa_lista = true;
 
 		if (usa_lista) {
 			// repositorioLivros = new RepositorioLivrosLista();
@@ -33,6 +52,7 @@ public class Programa {
 		}
 
 		testaRepositorioCliente(new Cliente[]{c1, c2});
+		System.out.print("\n");
 		testaRepositorioFuncionario(new Funcionario[]{fun1, fun2});
 
 		/* isso vai dar erro de nullpointer por causa dos repositorios de livros */
@@ -49,7 +69,7 @@ public class Programa {
 
 		System.out.println("Iniciando teste em repositorio de funcionarios");
 
-		System.out.print("\tInserindo "+len+" funcioanrios... ");
+		System.out.print("\tInserindo "+len+" funcionarios... ");
 		for (int i = 0; i < len; ++i) {
 			repositorioFuncionarios.inserir(funcionarios[i]);
 		}
@@ -243,8 +263,7 @@ public class Programa {
 
 		System.out.println("Testes concluidos em repositorioLivros. Nenhum erro encontrado");
 	}*/
-	public static void cadastraLivro(Funcionario funcionario, Livro livro) {
-		livro.setCadastrante(funcionario);
-		repositorioLivros.adicionaLivro(livro);
+	public static void cadastraCliente(Funcionario funcionario, Cliente livro) {
+		
 	}
 }
