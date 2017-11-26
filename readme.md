@@ -5,7 +5,7 @@ Chat do projeto
 # TODO #
 
 - Classe faixada;
-- Todas as exceções restantes/unir todas as exceções dos seus respectivos objetos em uma única exceção;
+- Todas as exceções restantes/unir todas as exceções dos seus respectivos objetos em uma única classe;
 - Lista e correções em Cliente e seus repositórios.
 
 # Coisas feitas #
