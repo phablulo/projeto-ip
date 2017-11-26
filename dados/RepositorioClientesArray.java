@@ -1,14 +1,16 @@
 package dados;
-import java.util.NoSuchElementException;
-public class RepositorioClienteArray implements ClienteRepositorio {
+import exceptions.*;
+import livraria.Cliente;
+
+public class RepositorioClientesArray implements RepositorioClientes {
 	private Cliente[] clientes;
 
-	public RepositorioClienteArray (){
+	public RepositorioClientesArray (){
 		this.clientes = new Cliente[0];
 	}
-	public void adicionaCliente(Cliente cliente) throws IllegalArgumentException {
+	public void adicionaCliente(Cliente cliente) throws ClienteJaCadastradoException {
 		if (this.procuraCliente(cliente) != null) {
-			throw new IllegalArgumentException("Cliente ja existe no repositorio");
+			throw new ClienteJaCadastradoException();
 		}
 		Cliente[] novo_arr = new Cliente[this.clientes.length+1];
 		for (int i = 0; i < this.clientes.length; ++i) {
@@ -18,7 +20,7 @@ public class RepositorioClienteArray implements ClienteRepositorio {
 		this.clientes = novo_arr;
 	}
 
-	public int procuraClienteIndex(String cpf) {
+	public int procuraClienteIndex(String cpf) throws ClienteNaoEncontradoException {
 		int index = -1;
 		for (int i = 0; i < this.clientes.length && index == -1; ++i) {
 			if (this.clientes[i].getCpf().equals(cpf)) {
@@ -27,18 +29,18 @@ public class RepositorioClienteArray implements ClienteRepositorio {
 		}
 		return index;
 	}
-	public Cliente procuraCliente(String cpf) {
+	public Cliente procuraCliente(String cpf) throws ClienteNaoEncontradoException {
 		int index = this.procuraClienteIndex(cpf);
 		if (index == -1) {
 			return null;
 		}
 		return this.clientes[index];
 	}
-	public Cliente procuraCliente(Cliente cliente) {
+	public Cliente procuraCliente(Cliente cliente) throws ClienteNaoEncontradoException {
 		return this.procuraCliente(cliente.getCpf());
 	}
 
-	public void removeCliente(String cpf) {
+	public void removeCliente(String cpf) throws ClienteNaoEncontradoException {
 		int index = this.procuraClienteIndex(cpf);
 		if (index != -1) {
 			Cliente[] novo_array = new Cliente[this.clientes.length-1];
@@ -50,15 +52,12 @@ public class RepositorioClienteArray implements ClienteRepositorio {
 			}
 		}
 	}
-	public void removeCliente(Cliente cliente) {
+	public void removeCliente(Cliente cliente) throws ClienteNaoEncontradoException {
 		this.removeCliente(cliente.getCpf());
 	}
 
 	public void atualizaCliente(String cpf, Cliente cliente) throws NoSuchElementException {
 		int index = this.procuraClienteIndex(cpf);
-		if (index == -1) {
-			throw new NoSuchElementException("Nenhum cliente cadastrado com este cpf");
-		}
 		this.clientes[index] = cliente;
 	}
 }

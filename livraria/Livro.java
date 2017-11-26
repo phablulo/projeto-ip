@@ -6,6 +6,7 @@ public class Livro {
 	private String[] autor;
 	private int numeroPaginas;
 	private double preco;
+	private Funcionario cadastrante;
 
 	public Livro(String id, String nome, String[] autor, int numeroPaginas, double preco) throws IllegalArgumentException {
 		if (autor.length == 0) {
@@ -16,6 +17,7 @@ public class Livro {
 		this.autor = autor;
 		this.numeroPaginas = numeroPaginas;
 		this.preco   = preco;
+		this.cadastrante = cadastrante;
 	}
 
 	public String getId() {
@@ -34,6 +36,10 @@ public class Livro {
 		return this.preco;
 	}
 
+	public Funcionario getCadastrante() {
+		return this.cadastrante;
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -48,5 +54,9 @@ public class Livro {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+	}
+
+	public void setCadastrante(Funcionario cadastrante) {
+		this.cadastrante = cadastrante;
 	}
 }

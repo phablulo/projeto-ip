@@ -1,16 +1,18 @@
 package dados;
-import java.util.NoSuchElementException;
-class Celula {
-	private Celula proximo;
+import exceptions.*;
+import livraria.Cliente;
+
+private class CCelula {
+	private CCelula proximo;
 	private Cliente cliente;
 
-	public Celula (Cliente cliente) {
+	public CCelula (Cliente cliente) {
 		this.setCliente(cliente);
 	}
-	public void setProximo(Celula proximo) {
+	public void setProximo(CCelula proximo) {
 		this.proximo = proximo;
 	}
-	public Celula getProximo() {
+	public CCelula getProximo() {
 		return this.proximo;
 	}
 	public void setCliente(Cliente cliente) {
@@ -25,20 +27,20 @@ class Celula {
 	public Boolean equals(String cpf) {
 		return this.cliente.getCpf().equals(cpf);
 	}
-	public Boolean equals(Celula to) {
+	public Boolean equals(CCelula to) {
 		return this.cliente.getCpf().equals(to.getCliente().getCpf());
 	}
 }
 
-public class RepositorioCliente implements ClienteRepositorio{
-	private Celula primeiro;
-	private Celula ultimo;
+public class RepositorioClientesLista implements RepositorioClientes{
+	private CCelula primeiro;
+	private CCelula ultimo;
 
-	public void adicionaCliente(Cliente cliente) throws IllegalArgumentException {
+	public void adicionaCliente(Cliente cliente) throws ClienteJaCadastradoException {
 		if (this.procuraCliente(cliente) != null) {
-			throw new IllegalArgumentException("Cliente ja existe no repositorio");
+			throw new ClienteJaCadastradoException();
 		}
-		Celula celula = new Celula(cliente);
+		CCelula celula = new CCelula(cliente);
 		if (this.ultimo != null) {
 			this.ultimo.setProximo(celula);
 			this.ultimo = celula;
@@ -48,26 +50,29 @@ public class RepositorioCliente implements ClienteRepositorio{
 		}
 	}
 
-	private Celula procuraCelula(String cpf) {
-		Celula atual = this.primeiro;
+	private CCelula procuraCCelula(String cpf) throws ClienteNaoEncontradoException {
+		CCelula atual = this.primeiro;
 		while (atual != null && !atual.equals(cpf)) {
 			atual = atual.getProximo();
 		}
+		if (atual == null) {
+			throw new ClienteNaoEncontradoException();
+		}
 		return atual;
 	}
-	public Cliente procuraCliente(String cpf) {
-		Celula celula = this.procuraCelula(cpf);
+	public Cliente procuraCliente(String cpf) throws ClienteNaoEncontradoException {
+		CCelula celula = this.procuraCCelula(cpf);
 		if (celula == null) {
 			return null;
 		}
 		return celula.getCliente();
 	}
-	public Cliente procuraCliente(Cliente cliente) {
+	public Cliente procuraCliente(Cliente cliente) throws ClienteNaoEncontradoException {
 		return this.procuraCliente(cliente.getCpf());
 	}
 
-	public void removeCliente(String cpf) {
-		Celula atual = this.primeiro;
+	public void removeCliente(String cpf) throws ClienteNaoEncontradoException {
+		CCelula atual = this.primeiro;
 		if (atual != null) {
 			if (atual.equals(cpf)) {
 				this.primeiro = atual.getProximo();
@@ -76,7 +81,7 @@ public class RepositorioCliente implements ClienteRepositorio{
 				}
 			} else {
 				boolean encontrou = false;
-				Celula proximo = atual.getProximo();
+				CCelula proximo = atual.getProximo();
 				while (proximo != null && !encontrou) {
 					if (proximo.equals(cpf)) {
 						atual.setProximo(proximo.getProximo());
@@ -86,18 +91,18 @@ public class RepositorioCliente implements ClienteRepositorio{
 						proximo = proximo.getProximo();
 					}
 				}
+				if (!encontrou) {
+					throw new ClienteNaoEncontradoException();
+				}
 			}
 		}
 	}
-	public void removeCliente(Cliente cliente) {
+	public void removeCliente(Cliente cliente) throws ClienteNaoEncontradoException {
 		this.removeCliente(cliente.getCpf());
 	}
 
-	public void atualizaCliente(String cpf, Cliente cliente) throws NoSuchElementException {
-		Celula celula = this.procuraCelula(cpf);
-		if (celula == null) {
-			throw new NoSuchElementException("Nenhum cliente cadastrado com este cpf");
-		}
+	public void atualizaCliente(String cpf, Cliente cliente) throws ClienteNaoEncontradoException {
+		CCelula celula = this.procuraCCelula(cpf);
 		celula.setCliente(cliente);
 	}
 }
