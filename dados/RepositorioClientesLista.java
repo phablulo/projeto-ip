@@ -2,7 +2,7 @@ package dados;
 import exceptions.*;
 import livraria.Cliente;
 
-private class CCelula {
+class CCelula {
 	private CCelula proximo;
 	private Cliente cliente;
 
@@ -37,16 +37,18 @@ public class RepositorioClientesLista implements RepositorioClientes{
 	private CCelula ultimo;
 
 	public void adicionaCliente(Cliente cliente) throws ClienteJaCadastradoException {
-		if (this.procuraCliente(cliente) != null) {
+		try {
+			this.procuraCliente(cliente);
 			throw new ClienteJaCadastradoException();
-		}
-		CCelula celula = new CCelula(cliente);
-		if (this.ultimo != null) {
-			this.ultimo.setProximo(celula);
-			this.ultimo = celula;
-		} else {
-			this.primeiro = celula;
-			this.ultimo = celula;
+		} catch(ClienteNaoEncontradoException e) {
+			CCelula celula = new CCelula(cliente);
+			if (this.ultimo != null) {
+				this.ultimo.setProximo(celula);
+				this.ultimo = celula;
+			} else {
+				this.primeiro = celula;
+				this.ultimo = celula;
+			}
 		}
 	}
 

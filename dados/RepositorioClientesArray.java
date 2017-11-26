@@ -9,15 +9,17 @@ public class RepositorioClientesArray implements RepositorioClientes {
 		this.clientes = new Cliente[0];
 	}
 	public void adicionaCliente(Cliente cliente) throws ClienteJaCadastradoException {
-		if (this.procuraCliente(cliente) != null) {
+		try {
+			this.procuraCliente(cliente);
 			throw new ClienteJaCadastradoException();
+		} catch (ClienteNaoEncontradoException e) {
+			Cliente[] novo_arr = new Cliente[this.clientes.length+1];
+			for (int i = 0; i < this.clientes.length; ++i) {
+				novo_arr[i] = this.clientes[i];
+			}
+			novo_arr[this.clientes.length] = cliente;
+			this.clientes = novo_arr;
 		}
-		Cliente[] novo_arr = new Cliente[this.clientes.length+1];
-		for (int i = 0; i < this.clientes.length; ++i) {
-			novo_arr[i] = this.clientes[i];
-		}
-		novo_arr[this.clientes.length] = cliente;
-		this.clientes = novo_arr;
 	}
 
 	public int procuraClienteIndex(String cpf) throws ClienteNaoEncontradoException {
@@ -56,7 +58,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 		this.removeCliente(cliente.getCpf());
 	}
 
-	public void atualizaCliente(String cpf, Cliente cliente) throws NoSuchElementException {
+	public void atualizaCliente(String cpf, Cliente cliente) throws ClienteNaoEncontradoException {
 		int index = this.procuraClienteIndex(cpf);
 		this.clientes[index] = cliente;
 	}
