@@ -13,11 +13,14 @@ public class Programa {
 	private static RepositorioLivros repositorioLivros;
 
 	public static void main(String[] args) {
-		Funcionario fun = new Funcionario("Paulo", "000.000.000-00", "Vendedor");
+		Funcionario fun1 = new Funcionario("Paulo", "000.000.000-01", "Vendedor");
+		Funcionario fun2 = new Funcionario("Joao", "111.111.111-11", "Vendedor");
+		Cliente c1 = new Cliente("Marcos","123.123.123-12");
+		Cliente c2 = new Cliente("Lucas","234.234.234-23");
 		Livro alquimista = new Livro("001", "O Alquimista", new String[]{"Paulo Coelho"}, 93, 25.0);
 		Livro narnia     = new Livro("001", "As Crônicas de Nárnia", new String[]{"C.S. Lewis"}, 800, 80.0);
 
-		Boolean usa_lista = false;
+		Boolean usa_lista = true;
 
 		if (usa_lista) {
 			// repositorioLivros = new RepositorioLivrosLista();
@@ -29,9 +32,12 @@ public class Programa {
 			repositorioFuncionarios = new RepositorioFuncionariosArray();
 		}
 
+		testaRepositorioCliente(new Cliente[]{c1, c2});
+		testaRepositorioFuncionario(new Funcionario[]{fun1, fun2});
 
-		cadastraLivro(fun, alquimista);
-		cadastraLivro(fun, narnia);
+		/* isso vai dar erro de nullpointer por causa dos repositorios de livros */
+		// cadastraLivro(fun, alquimista);
+		// cadastraLivro(fun, narnia);
 	}
 	public static void testaRepositorioFuncionario(Funcionario[] funcionarios) {
 		int len = funcionarios.length;
@@ -68,13 +74,13 @@ public class Programa {
 			System.out.println("Nenhum funcionario encontrado, assim como esperado.");
 		}
 
-		System.out.print("\tAtualizando funcionario com cpf ="+fun.getCpf()+"... ");
+		System.out.print("\tAtualizando funcionario com cpf = "+fun.getCpf()+"... ");
 		try {
 			fun.setNome("Astrogildo");
 			repositorioFuncionarios.atualizar(fun);
 			System.out.println("funcionario atualizado: "+fun.getNome());
 		} catch(FuncionarioNaoEncontradoException e) {
-			System.out.println("\n\t\tErro!\n\t\tfuncionario foi atualizado, apesar de ter sido cadastrado.");
+			System.out.println("\n\t\tErro!\n\t\tfuncionario nao foi atualizado, apesar de ter sido cadastrado.");
 			return;
 		}
 		System.out.print("\tAtualizando funcionario com cpf = abcde... ");
@@ -125,7 +131,7 @@ public class Programa {
 		System.out.print("\tFazendo busca por cliente com cpf = "+fun.getCpf()+"... ");
 		try {
 			fun = repositorioClientes.procuraCliente(fun.getCpf());
-			System.out.println("Encontrado:"+fun.getNome());
+			System.out.println("Encontrado: "+fun.getNome());
 		} catch(ClienteNaoEncontradoException e) {
 			System.out.println("\n\t\tErro!\n\t\tcliente nao foi encontrado, apesar de ter sido cadastrado.");
 			return;
@@ -139,11 +145,11 @@ public class Programa {
 			System.out.println("Nenhum cliente encontrado, assim como esperado.");
 		}
 
-		System.out.print("\tAtualizando cliente com cpf ="+fun.getCpf()+"... ");
+		System.out.print("\tAtualizando cliente com cpf = "+fun.getCpf()+"... ");
 		try {
 			fun.setNome("Astrogildo");
 			repositorioClientes.atualizaCliente(fun.getCpf(), fun);
-			System.out.println("cliente atualizado:"+fun.getNome());
+			System.out.println("cliente atualizado: "+fun.getNome());
 		} catch(ClienteNaoEncontradoException e) {
 			System.out.println("\n\t\tErro!\n\t\tcliente foi atualizado, apesar de ter sido cadastrado.");
 			return;
@@ -191,7 +197,7 @@ public class Programa {
 		System.out.print("\tFazendo busca por livro com nome ="+fun.getNome()+"... ");
 		try {
 			fun = repositorioLivros.procuraLivro(fun.getNome());
-			System.out.println("Encontrado:"+fun.getNome());
+			System.out.println("Encontrado: "+fun.getNome());
 		} catch(LivroNaoEncontradoException e) {
 			System.out.println("\n\t\tErro!\n\t\tlivro nao foi encontrado, apesar de ter sido cadastrado.");
 			return;
@@ -210,7 +216,7 @@ public class Programa {
 		try {
 			fun.setNome("Astrogildo");
 			repositorioLivros.atualizaLivro("Astrogildo",fun);
-			System.out.println("livro atualizado:"+fun.getNome());
+			System.out.println("livro atualizado: "+fun.getNome());
 		} catch(LivroNaoEncontradoException e) {
 			System.out.println("\n\t\tErro!\n\t\tlivro nao foi atualizado, apesar de ter sido cadastrado.");
 			return;

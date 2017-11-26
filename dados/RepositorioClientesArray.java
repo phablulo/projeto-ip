@@ -29,13 +29,13 @@ public class RepositorioClientesArray implements RepositorioClientes {
 				index = i;
 			}
 		}
+		if (index == -1) {
+			throw new ClienteNaoEncontradoException();
+		}
 		return index;
 	}
 	public Cliente procuraCliente(String cpf) throws ClienteNaoEncontradoException {
 		int index = this.procuraClienteIndex(cpf);
-		if (index == -1) {
-			return null;
-		}
 		return this.clientes[index];
 	}
 	public Cliente procuraCliente(Cliente cliente) throws ClienteNaoEncontradoException {
@@ -49,7 +49,7 @@ public class RepositorioClientesArray implements RepositorioClientes {
 			for (int i = 0; i < index; ++i) {
 				novo_array[i] = this.clientes[i];
 			}
-			for (int i = index+1; i < this.clientes.length; ++i) {
+			for (int i = index+1; i < this.clientes.length-1; ++i) {
 				novo_array[i] = this.clientes[i];
 			}
 		}

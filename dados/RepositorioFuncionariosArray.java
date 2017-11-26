@@ -16,8 +16,7 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	public int getIndex(String cpf) {
 		int resultado = -1;
 		boolean encontrado = false;
-		int length = this.funcionarios.length;
-		for(int i = 0; i < length && !encontrado; i++) {
+		for(int i = 0; i < this.funcionarios.length && !encontrado; i++) {
 			if(this.funcionarios[i].getCpf().equals(cpf)) {
 				resultado = i;
 				encontrado = true; // adicionada condicao de parada quando encontrar o funcionario
@@ -73,7 +72,7 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 			// continuar corrigindo os indices
 			int length = this.funcionarios.length;
 			Funcionario[] aux1 = new Funcionario[length - 1]; // nao eh `- index`, eh `- 1`
-			for(int i = 0; i < length; i++) {
+			for(int i = 0; i < length-1; i++) {
 				if(i == index) {
 					continue;
 					// okay, colocar i++ aqui daria uns bug estranho, alem de um ArrayIndexOutOfBoudsException na linha seguinte.
