@@ -27,9 +27,6 @@ public class Funcionario extends Pessoa {
 	public String getEndereco() {
 		return super.getEndereco();
 	}
-	public Funcionario getFuncionario() {
-		return new Funcionario(super.getNome(), super.getCpf(), this.cargo, super.getDataNasc(), super.getEndereco());
-	}
 	public boolean equals(String cpf) {
 		return super.getCpf().equals(cpf);
 	}

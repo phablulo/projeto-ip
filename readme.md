@@ -4,8 +4,7 @@ Chat do projeto
 
 # TODO #
 
-- Todas as exceções restantes/unir todas as exceções dos seus respectivos objetos em uma única classe;
-
+ ༼ つ ◕_◕ ༽つVazio༼ つ ◕_◕ ༽つ
 
 # Output do programa
 Com array:
@@ -45,9 +44,9 @@ Iniciando programa. Usaremos repositorio em lista
 
 Iniciando teste em repositorio de clientes
 	Inserindo 2 clientes... [OK]
-	Fazendo busca por cliente com cpf = 123.123.123-12... Encontrado: Marcos
+	Fazendo busca por cliente com cpf = 234.234.234-23... Encontrado: Lucas
 	Fazendo busca por cliente com cpf = abcde... Nenhum cliente encontrado, assim como esperado.
-	Atualizando cliente com cpf = 123.123.123-12... cliente atualizado: Astrogildo
+	Atualizando cliente com cpf = 234.234.234-23... cliente atualizado: Astrogildo
 	Atualizando cliente com cpf = abcde... Nenhum cliente atualizado, assim como esperado.
 	Removendo clientes cadastrados... [OK]
 Testes concluidos em repositorioClientes. Nenhum erro encontrado
@@ -55,14 +54,12 @@ Testes concluidos em repositorioClientes. Nenhum erro encontrado
 Iniciando teste em repositorio de funcionarios
 	Inserindo 2 funcionarios... [OK]
 	Fazendo busca por funcionario com cpf = 111.111.111-11... Encontrado: Joao
-	Fazendo busca por funcionario com cpf = abcde... Exception in thread "main" java.lang.NullPointerException
-	at dados.RepositorioFuncionariosLista.procurar(RepositorioFuncionariosLista.java:25)
-	at dados.RepositorioFuncionariosLista.procurar(RepositorioFuncionariosLista.java:28)
-	at dados.RepositorioFuncionariosLista.procurar(RepositorioFuncionariosLista.java:28)
-	at ui.Programa.testaRepositorioFuncionario(Programa.java:90)
-	at ui.Programa.main(Programa.java:56)
+	Fazendo busca por funcionario com cpf = abcde... Nenhum funcionario encontrado, assim como esperado.
+	Atualizando funcionario com cpf = 111.111.111-11... funcionario atualizado: Astrogildo
+	Atualizando funcionario com cpf = abcde... Nenhum funcionario atualizado, assim como esperado.
+	Removendo funcionarios cadastrados... [OK]
+Testes concluidos em RepositorioFuncionarios. Nenhum erro encontrado
 ```
-
 
 # Coisas feitas #
 
@@ -119,8 +116,8 @@ Iniciando teste em repositorio de funcionarios
 | feito | funciona ? | motivo
 |-------|------------|---------
 | leitura de arquivo | sim |
-| teste do Repositório de Funcionários em lista | não | erro ao remover funcionários: NullPointerException
-| teste do Repositório de Funcionários em array | não | erro ao remover funcionários: NullPointerException
+| teste do Repositório de Funcionários em lista | sim
+| teste do Repositório de Funcionários em array | sim
 | teste do Repositório de Clientes em lista | sim |
 | teste do Repositório de Clientes em array | sim |
 

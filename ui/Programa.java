@@ -8,8 +8,6 @@ import java.util.Scanner;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 
-/*Classe para testar o programa e tratar das exceptions*/
-
 public class Programa {
 	private static RepositorioClientes repositorioClientes;
 	private static RepositorioFuncionarios repositorioFuncionarios;
@@ -39,7 +37,7 @@ public class Programa {
 		Cliente c1 = new Cliente("Marcos","123.123.123-12");
 		Cliente c2 = new Cliente("Lucas","234.234.234-23");
 		Livro alquimista = new Livro("001", "O Alquimista", new String[]{"Paulo Coelho"}, 93, 25.0);
-		Livro narnia     = new Livro("001", "As Crônicas de Nárnia", new String[]{"C.S. Lewis"}, 800, 80.0);
+		Livro narnia     = new Livro("001", "As Criancas de Narnia", new String[]{"C.S. Lewis"}, 800, 80.0);
 
 		if (usa_lista) {
 			// repositorioLivros = new RepositorioLivrosLista();
@@ -63,15 +61,22 @@ public class Programa {
 		int len = funcionarios.length;
 
 		if (len == 0) {
-			System.out.println("Não pode testar com um vetor vazio de funcionarios");
+			System.out.println("Nao pode testar com um vetor vazio de funcionarios");
 			return;
 		}
 
 		System.out.println("Iniciando teste em repositorio de funcionarios");
 
 		System.out.print("\tInserindo "+len+" funcionarios... ");
+		
 		for (int i = 0; i < len; ++i) {
-			repositorioFuncionarios.inserir(funcionarios[i]);
+			try {
+				repositorioFuncionarios.inserir(funcionarios[i]);
+			} catch (FuncionarioJaCadastradoException e){
+				System.out.println("\n\t\tErro!\n\t\tFuncionario ja foi cadastrado");
+				return;
+			}
+			
 		}
 		System.out.println("[OK]");
 
@@ -129,7 +134,7 @@ public class Programa {
 		int len = clientes.length;
 
 		if (len == 0) {
-			System.out.println("Não pode testar com um vetor vazio de clientes");
+			System.out.println("Nao pode testar com um vetor vazio de clientes");
 			return;
 		}
 

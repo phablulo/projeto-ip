@@ -16,7 +16,7 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 		if(this.funcionario == null) {
 			this.funcionario = funcionario;
 			this.next = new RepositorioFuncionariosLista();
-		} else if(this.funcionario != null && this.funcionario.equals(funcinario.getCpf())) {
+		} else if(this.funcionario != null && this.funcionario.equals(funcionario.getCpf())) {
 			throw new FuncionarioJaCadastradoException();
 		} else {
 			this.next.inserir(funcionario);
@@ -35,17 +35,21 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 	public void atualizar(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		if(this.funcionario != null && this.funcionario.equals(funcionario.getCpf())) {
 			this.funcionario = funcionario;
-		} else if(this.funcionario == null && !(this.funcionario.equals(funcionario.getCpf()))) {
+		} else if(this.funcionario == null) {
 			throw new FuncionarioNaoEncontradoException();
 		} else {
 			this.next.atualizar(funcionario);
 		}
 	}
-	//Se não funcionar (info hiding), atribuir o Funcionario retornado por uma busca a this.funcionario
 	public void remover(Funcionario funcionario) throws FuncionarioNaoEncontradoException {
 		if(this.funcionario != null && this.funcionario.equals(funcionario.getCpf())) {
-			this.funcionario = this.next.funcionario.getFuncionanrio();
-			this.next = this.next.next;
+			if(this.next != null) {
+				this.funcionario = this.next.funcionario;
+				this.next = this.next.next;
+			} else {
+				this.funcionario = null;
+				this.next = null;
+			}				
 		} else if(this.funcionario == null) {
 			throw new FuncionarioNaoEncontradoException();
 		} else {
