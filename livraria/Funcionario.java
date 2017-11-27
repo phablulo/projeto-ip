@@ -30,8 +30,8 @@ public class Funcionario extends Pessoa {
 	public Funcionario getFuncionario() {
 		return new Funcionario(super.getNome(), super.getCpf(), this.cargo, super.getDataNasc(), super.getEndereco());
 	}
-	public boolean equals(Funcionario funcionario) {
-		return super.getCpf().equals(funcionario.getCpf());
+	public boolean equals(String cpf) {
+		return super.getCpf().equals(cpf);
 	}
 	public void atualizar(Funcionario funcionario) {	
 		super.atualizar(funcionario);
