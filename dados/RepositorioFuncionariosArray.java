@@ -2,6 +2,7 @@ package dados;
 
 import livraria.Funcionario;
 import exceptions.FuncionarioNaoEncontradoException;
+import exceptions.FuncionarioJaCadastradoException;
 
 public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	private Funcionario[] funcionarios;
@@ -27,15 +28,19 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 	// Permitir sobrescrever sem excecao?
 	// 		Nao. Cria um novo array contendo todos os funcionarios
 	// 		reescrevi todo o metodo. Olha as diferencas no historico do git.
-	public void inserir(Funcionario funcionario) {
-		int length = this.funcionarios.length;
-		Funcionario[] arr = new Funcionario[length + 1];
-		int i;
-		for (i = 0; i < length; ++i) {
-			arr[i] = this.funcionarios[i];
+	public void inserir(Funcionario funcionario) throws FuncionarioJaCadastradoException{
+		if(this.getIndex(funcionario.getCpf()) != -1){
+			throw new FuncionarioJaCadastradoException();
+		} else {
+			int length = this.funcionarios.length;
+			Funcionario[] arr = new Funcionario[length + 1];
+			int i;
+			for(i = 0; i < length; ++i){
+				arr[i] = this.funcionarios[i];
+			}
+			arr[i] = funcionario;
+			this.funcionarios = arr;
 		}
-		arr[i] = funcionario;
-		this.funcionarios = arr;
 	}
 	// aqui ia dar erro. Estava escrito assim:
 	// public Funcionario procurar(String cpf) {

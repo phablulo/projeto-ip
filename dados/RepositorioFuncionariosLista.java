@@ -1,6 +1,7 @@
 package dados;
 import livraria.Funcionario;
 import exceptions.FuncionarioNaoEncontradoException;
+import exceptions.FuncionarioJaCadastradoException;
 
 public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 	private Funcionario funcionario;
@@ -11,10 +12,12 @@ public class RepositorioFuncionariosLista implements RepositorioFuncionarios {
 		this.next = null;
 	}
 	
-	public void inserir(Funcionario funcionario) {
+	public void inserir(Funcionario funcionario) throws FuncionarioJaCadastradoException{
 		if(this.funcionario == null) {
 			this.funcionario = funcionario;
 			this.next = new RepositorioFuncionariosLista();
+		} else if(this.funcionario != null && this.funcionario.equals(funcinario.getCpf())){
+			throw new FuncionarioJaCadastradoException();
 		} else {
 			this.next.inserir(funcionario);
 		}

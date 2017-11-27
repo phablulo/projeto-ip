@@ -85,7 +85,7 @@ Iniciando teste em repositorio de funcionarios
 
 | nome | feito por | terminado
 |------|-----------|-----------|
-| ClienteRepositorio | Phablulo | sim
+| RepositorioClientes | Phablulo | sim
 | RepositorioLivros | Robson | sim
 
 
@@ -107,6 +107,7 @@ Iniciando teste em repositorio de funcionarios
 | nome | feito por | terminado |
 |------|-----------|-----------|
 | FuncionarioNaoEncontradoException | Robson | sim
+| FuncionarioJaCadastradoException | Robson | sim
 | LivroNaoEncontradoException | Robson | sim
 | LivroJaCadastradoException | Robson | sim
 
