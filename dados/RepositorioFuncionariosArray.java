@@ -66,9 +66,9 @@ public class RepositorioFuncionariosArray implements RepositorioFuncionarios {
 				aux[i] = funcionarios[i];
 			}
 			for(int i = index; i < length - 1; i++) {
-				aux[i] = funcionarios[i];
+				aux[i] = funcionarios[i + 1];
 			}
-			this.funcionarios = new Funcionarios[length - 1];
+			this.funcionarios = new Funcionario[length - 1];
 			this.funcionarios = aux;
 		}
 	}
