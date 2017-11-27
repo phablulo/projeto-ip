@@ -86,6 +86,7 @@ Iniciando teste em repositorio de funcionarios
 | nome | feito por | terminado
 |------|-----------|-----------|
 | RepositorioClientes | Phablulo | sim
+| RepositorioFuncionarios | Robson | sim
 | RepositorioLivros | Robson | sim
 
 
