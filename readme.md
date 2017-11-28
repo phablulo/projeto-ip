@@ -34,6 +34,7 @@ Iniciando teste em repositorio de funcionarios
 	at dados.RepositorioFuncionariosArray.remover(RepositorioFuncionariosArray.java:68)
 	at ui.Programa.testaRepositorioFuncionario(Programa.java:119)
 	at ui.Programa.main(Programa.java:56)
+
 ```
 Com lista:
 ```
